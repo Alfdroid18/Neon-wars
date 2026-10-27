@@ -753,7 +753,7 @@
         const volMusicSlider = document.getElementById('volMusicSlider');
         if (volMusicSlider) {
             volMusicSlider.addEventListener('input', (e) => {
-                bgmVolume = e.target.value / 100;
+                bgmVolume = (e.target.value / 100)*0.1;
                 const valEl = document.getElementById('volMusicValue');
                 if (valEl) valEl.innerText = e.target.value + '%';
                 if (currentBGM) {
