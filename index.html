@@ -228,7 +228,7 @@
 
     <!-- Personalizzazione Colore -->
     <div id="customizeScreen" class="ui-layer interactive hidden bg-black/95 flex items-center justify-center p-4 z-50">
-        <div class="w-full max-w-lg bg-gray-900 border border-pink-700 shadow-[0_0_30px_rgba(236,72,153,0.3)] rounded-2xl p-6 md:p-8 flex flex-col fade-in">
+        <div class="w-full max-w-lg bg-gray-900 border border-pink-700 shadow-[0_0_30px_rgba(236,72,153,0.3)] rounded-2xl p-6 md:p-8 flex flex-col fade-in max-h-[90vh] overflow-y-auto custom-scroll">
             <div class="flex justify-between items-center mb-6 pb-2 border-b border-gray-700">
                 <h2 id="custTitle" class="text-3xl md:text-4xl font-black text-white uppercase tracking-wider" style="text-shadow: 0 0 10px #ec4899;">Colori</h2>
                 <button id="btnCloseCustomize" class="text-gray-400 hover:text-red-500 font-bold text-3xl md:text-4xl transition-colors">&times;</button>
@@ -236,7 +236,7 @@
             
             <p id="custDesc" class="text-gray-300 mb-6 text-center text-sm md:text-base">Seleziona il colore del tuo nucleo e dei proiettili.</p>
             
-            <div id="colorGrid" class="grid grid-cols-4 md:grid-cols-5 gap-4 justify-items-center mb-4">
+            <div id="colorGrid" class="grid grid-cols-5 gap-4 justify-items-center mb-4">
                 <!-- Generati dinamicamente via JS -->
             </div>
         </div>
@@ -252,22 +252,25 @@
             
             <!-- Barra Volume Musica -->
             <div class="mb-4">
-                <label class="block text-gray-300 mb-1 font-bold" id="lblVolumeMusic">Musica: <span id="volMusicValue" class="text-cyan-400">60%</span></label>
-                <input type="range" id="volMusicSlider" min="0" max="100" value="60" class="w-full h-2 bg-gray-700 rounded-lg appearance-none cursor-pointer">
+                <label class="block text-gray-300 mb-1 font-bold" id="lblVolumeMusic">Musica: <span id="volMusicValue" class="text-cyan-400">70%</span></label>
+                <input type="range" id="volMusicSlider" min="0" max="100" value="70" class="w-full h-2 bg-gray-700 rounded-lg appearance-none cursor-pointer">
             </div>
 
             <!-- Barra Volume Effetti -->
             <div class="mb-6">
-                <label class="block text-gray-300 mb-1 font-bold" id="lblVolumeSfx">Effetti: <span id="volSfxValue" class="text-cyan-400">60%</span></label>
-                <input type="range" id="volSfxSlider" min="0" max="100" value="60" class="w-full h-2 bg-gray-700 rounded-lg appearance-none cursor-pointer">
+                <label class="block text-gray-300 mb-1 font-bold" id="lblVolumeSfx">Effetti: <span id="volSfxValue" class="text-cyan-400">50%</span></label>
+                <input type="range" id="volSfxSlider" min="0" max="100" value="50" class="w-full h-2 bg-gray-700 rounded-lg appearance-none cursor-pointer">
             </div>
 
             <div class="mb-6">
                 <label class="block text-gray-300 mb-2 font-bold" id="lblLang">Lingua / Language</label>
-                <div class="flex gap-2">
-                    <button class="lang-btn flex-1 py-2 bg-blue-600 border border-blue-400 rounded text-white font-bold shadow-lg" data-lang="it">IT</button>
-                    <button class="lang-btn flex-1 py-2 bg-gray-800 border border-gray-600 rounded text-gray-300 hover:bg-gray-700" data-lang="en">EN</button>
-                    <button class="lang-btn flex-1 py-2 bg-gray-800 border border-gray-600 rounded text-gray-300 hover:bg-gray-700" data-lang="es">ES</button>
+                <div class="grid grid-cols-3 gap-2">
+                    <button class="lang-btn py-2 bg-blue-600 border border-blue-400 rounded text-white font-bold shadow-lg" data-lang="it">IT</button>
+                    <button class="lang-btn py-2 bg-gray-800 border border-gray-600 rounded text-gray-300 hover:bg-gray-700" data-lang="en">EN</button>
+                    <button class="lang-btn py-2 bg-gray-800 border border-gray-600 rounded text-gray-300 hover:bg-gray-700" data-lang="es">ES</button>
+                    <button class="lang-btn py-2 bg-gray-800 border border-gray-600 rounded text-gray-300 hover:bg-gray-700" data-lang="fr">FR</button>
+                    <button class="lang-btn py-2 bg-gray-800 border border-gray-600 rounded text-gray-300 hover:bg-gray-700" data-lang="de">DE</button>
+                    <button class="lang-btn py-2 bg-gray-800 border border-gray-600 rounded text-gray-300 hover:bg-gray-700" data-lang="pt">PT</button>
                 </div>
             </div>
 
@@ -411,13 +414,18 @@
 
     <!-- Game Over -->
     <div id="gameOverScreen" class="ui-layer interactive hidden bg-red-900/90 flex items-center justify-center backdrop-blur-md p-4 z-50">
-        <div class="text-center fade-in">
+        <div class="text-center fade-in flex flex-col items-center">
             <h1 id="goTitle" class="text-5xl md:text-6xl font-black mb-4 neon-text-red uppercase">Sistema Distrutto</h1>
             <p class="text-xl md:text-2xl mb-2">Punteggio: <span id="finalScore" class="font-bold text-yellow-400">0</span></p>
             <p class="text-lg md:text-xl mb-8 text-gray-300">Tempo: <span id="finalTime" class="font-bold">00:00</span></p>
-            <button id="btnRestart" class="px-8 py-4 bg-red-600 hover:bg-red-500 text-white font-bold rounded-full text-xl md:text-2xl transition-all shadow-[0_0_20px_rgba(220,38,38,0.5)]">
-                RIPROVA
-            </button>
+            <div class="flex flex-col gap-4 w-full max-w-xs">
+                <button id="btnRestart" class="px-8 py-4 bg-red-600 hover:bg-red-500 text-white font-bold rounded-full text-xl md:text-2xl transition-all shadow-[0_0_20px_rgba(220,38,38,0.5)]">
+                    RIPROVA
+                </button>
+                <button id="btnMenuFromGameOver" class="px-8 py-3 bg-gray-900/90 hover:bg-gray-800 text-cyan-400 border border-cyan-500 font-bold rounded-full text-lg md:text-xl transition-all shadow-[0_0_15px_rgba(6,182,212,0.4)]">
+                    TORNA AL MENÙ
+                </button>
+            </div>
         </div>
     </div>
 
@@ -462,50 +470,97 @@
             hard: { cap: 85, spawnInit: 1.1, spawnMin: 0.14, eraMult: 0.7, maxBoss: 3, maxGen: 3, maxBH: 2 }
         };
 
-        // --- GESTIONE LINGUE ---
+        // --- GESTIONE LINGUE (6 LINGUE) ---
+        let currentLang = 'it';
         const txtTranslations = {
             it: {
                 txtSub: "Trascina lo schermo o usa WASD per muoverti. Il tiro è automatico. Usa il pulsante ⚡ per scattare.",
                 btnStart: "INIZIA PARTITA", btnSandboxMenu: "🛠️ MODALITÀ SANDBOX", btnEncyclopedia: "📖 ENCICLOPEDIA",
                 btnCustomize: "🎨 PERSONALIZZA", btnSettingsMenu: "⚙️ IMPOSTAZIONI", diffTitle: "Seleziona Difficoltà",
+                btnDiffEasy: "🟢 FACILE", btnDiffNormal: "🟡 NORMALE", btnDiffHard: "🔴 ESTREMA",
                 btnBackDiff: "INDIETRO", sbTitle: "Sandbox", sbDesc: "Seleziona i nemici con cui vuoi allenarti. I record non vengono salvati.",
                 sbDiffLabel: "Difficoltà Sandbox:", btnStartSandbox: "AVVIA ALLENAMENTO", custTitle: "Colori",
                 custDesc: "Seleziona il colore del tuo nucleo e dei proiettili.", settingsTitle: "Impostazioni",
                 lblVolumeMusic: "Musica: ", lblVolumeSfx: "Effetti: ", lblLang: "Lingua / Language", btnOpenTutorial: "📚 COME SI GIOCA",
                 tutTitle: "Come si gioca", pauseTitle: "IN PAUSA", btnResume: "RIPRENDI", btnSettingsPause: "⚙️ IMPOSTAZIONI",
                 btnMenuFromPause: "ABBANDONA PARTITA", encTitle: "Enciclopedia", goTitle: "Sistema Distrutto",
-                btnRestart: "RIPROVA", luTitle: "LIVELLO SUPERATO!", luDesc: "Scegli un potenziamento",
+                btnRestart: "RIPROVA", btnMenuGO: "TORNA AL MENÙ", luTitle: "LIVELLO SUPERATO!", luDesc: "Scegli un potenziamento",
                 tutContent: "<p><strong>🕹️ Movimento:</strong> Usa il joystick virtuale toccando lo schermo, oppure usa i tasti W, A, S, D.</p><p><strong>🎯 Sparo:</strong> La navicella spara automaticamente al nemico più vicino. Pensa solo a sopravvivere!</p><p><strong>⚡ Scatto:</strong> Tocca il bottone col fulmine o usa SPAZIO per scattare. Durante lo scatto sei invincibile e fai danno.</p><p><strong>💎 Potenziamenti:</strong> Raccogli le gemme colorate per riempire la barra gialla, sali di livello e scegli nuovi potenziamenti strategici.</p><p class='text-cyan-400 text-center font-bold mt-4'>Sopravvivi il più a lungo possibile!</p>"
             },
             en: {
                 txtSub: "Drag screen or use WASD to move. Shooting is automatic. Use ⚡ to dash.",
                 btnStart: "START GAME", btnSandboxMenu: "🛠️ SANDBOX MODE", btnEncyclopedia: "📖 ENCYCLOPEDIA",
                 btnCustomize: "🎨 CUSTOMIZE", btnSettingsMenu: "⚙️ SETTINGS", diffTitle: "Select Difficulty",
+                btnDiffEasy: "🟢 EASY", btnDiffNormal: "🟡 NORMAL", btnDiffHard: "🔴 EXTREME",
                 btnBackDiff: "BACK", sbTitle: "Sandbox", sbDesc: "Select enemies to practice against. Records are not saved.",
                 sbDiffLabel: "Sandbox Difficulty:", btnStartSandbox: "START TRAINING", custTitle: "Colors",
                 custDesc: "Select the color of your core and projectiles.", settingsTitle: "Settings",
                 lblVolumeMusic: "Music: ", lblVolumeSfx: "SFX: ", lblLang: "Language", btnOpenTutorial: "📚 HOW TO PLAY",
                 tutTitle: "How to play", pauseTitle: "PAUSED", btnResume: "RESUME", btnSettingsPause: "⚙️ SETTINGS",
                 btnMenuFromPause: "QUIT GAME", encTitle: "Encyclopedia", goTitle: "System Destroyed",
-                btnRestart: "TRY AGAIN", luTitle: "LEVEL UP!", luDesc: "Choose an upgrade",
+                btnRestart: "TRY AGAIN", btnMenuGO: "MAIN MENU", luTitle: "LEVEL UP!", luDesc: "Choose an upgrade",
                 tutContent: "<p><strong>🕹️ Movement:</strong> Use the virtual joystick by touching the screen, or use W, A, S, D keys.</p><p><strong>🎯 Shooting:</strong> The ship automatically shoots at the nearest enemy.</p><p><strong>⚡ Dash:</strong> Tap the lightning button or press SPACE to dash. You are invincible during a dash and deal impact damage.</p><p><strong>💎 Upgrades:</strong> Collect gems to fill the yellow bar, level up, and choose strategic upgrades.</p><p class='text-cyan-400 text-center font-bold mt-4'>Survive as long as possible!</p>"
             },
             es: {
                 txtSub: "Arrastra la pantalla o usa WASD para moverte. El disparo es automático. Usa ⚡ para esquivar.",
                 btnStart: "INICIAR JUEGO", btnSandboxMenu: "🛠️ MODO SANDBOX", btnEncyclopedia: "📖 ENCICLOPEDIA",
                 btnCustomize: "🎨 PERSONALIZAR", btnSettingsMenu: "⚙️ AJUSTES", diffTitle: "Elige Dificultad",
+                btnDiffEasy: "🟢 FÁCIL", btnDiffNormal: "🟡 NORMAL", btnDiffHard: "🔴 EXTREMA",
                 btnBackDiff: "VOLVER", sbTitle: "Sandbox", sbDesc: "Elige enemigos para practicar. No se guardan los récords.",
                 sbDiffLabel: "Dificultad Sandbox:", btnStartSandbox: "INICIAR ENTRENAMIENTO", custTitle: "Colores",
                 custDesc: "Elige el color de tu núcleo y proyectiles.", settingsTitle: "Ajustes",
                 lblVolumeMusic: "Música: ", lblVolumeSfx: "Efectos: ", lblLang: "Idioma", btnOpenTutorial: "📚 CÓMO JUGAR",
                 tutTitle: "Cómo jugar", pauseTitle: "PAUSA", btnResume: "REANUDAR", btnSettingsPause: "⚙️ AJUSTES",
                 btnMenuFromPause: "SALIR DEL JUEGO", encTitle: "Enciclopedia", goTitle: "Sistema Destruido",
-                btnRestart: "REINTENTAR", luTitle: "¡NIVEL SUPERADO!", luDesc: "Elige una mejora",
+                btnRestart: "REINTENTAR", btnMenuGO: "MENÚ PRINCIPAL", luTitle: "¡NIVEL SUPERADO!", luDesc: "Elige una mejora",
                 tutContent: "<p><strong>🕹️ Movimiento:</strong> Usa el joystick en pantalla o las teclas W, A, S, D.</p><p><strong>🎯 Disparo:</strong> La nave dispara automáticamente al enemigo más cercano.</p><p><strong>⚡ Dash:</strong> Toca el rayo o presiona ESPACIO para esquivar. Eres invencible durante el dash y haces daño de impacto.</p><p><strong>💎 Mejoras:</strong> Recoge gemas para llenar la barra amarilla, subir de nivel y elegir mejoras.</p><p class='text-cyan-400 text-center font-bold mt-4'>¡Sobrevive el mayor tiempo posible!</p>"
+            },
+            fr: {
+                txtSub: "Glissez l'écran ou utilisez WASD pour bouger. Le tir est automatique. Utilisez ⚡ pour foncer.",
+                btnStart: "JOUER", btnSandboxMenu: "🛠️ MODE SANDBOX", btnEncyclopedia: "📖 ENCYCLOPÉDIE",
+                btnCustomize: "🎨 PERSONNALISER", btnSettingsMenu: "⚙️ PARAMÈTRES", diffTitle: "Choisir la Difficulté",
+                btnDiffEasy: "🟢 FACILE", btnDiffNormal: "🟡 NORMAL", btnDiffHard: "🔴 EXTRÊME",
+                btnBackDiff: "RETOUR", sbTitle: "Sandbox", sbDesc: "Sélectionnez les ennemis pour vous entraîner. Les records ne sont pas sauvegardés.",
+                sbDiffLabel: "Difficulté Sandbox :", btnStartSandbox: "LANCER L'ENTRAÎNEMENT", custTitle: "Couleurs",
+                custDesc: "Choisissez la couleur de votre noyau et de vos projectiles.", settingsTitle: "Paramètres",
+                lblVolumeMusic: "Musique : ", lblVolumeSfx: "Effets : ", lblLang: "Langue", btnOpenTutorial: "📚 COMMENT JOUER",
+                tutTitle: "Comment jouer", pauseTitle: "EN PAUSE", btnResume: "REPRENDRE", btnSettingsPause: "⚙️ PARAMÈTRES",
+                btnMenuFromPause: "QUITTER LA PARTIE", encTitle: "Encyclopédie", goTitle: "Système Détruit",
+                btnRestart: "RÉESSAYER", btnMenuGO: "MENU PRINCIPAL", luTitle: "NIVEAU SUPÉRIEUR !", luDesc: "Choisissez une amélioration",
+                tutContent: "<p><strong>🕹️ Mouvement :</strong> Utilisez le joystick virtuel en touchant l'écran ou les touches W, A, S, D.</p><p><strong>🎯 Tir :</strong> Le vaisseau tire automatiquement sur l'ennemi le plus proche.</p><p><strong>⚡ Ruée (Dash) :</strong> Touchez l'éclair ou ESPACE pour foncer. Vous êtes invincible pendant la ruée.</p><p><strong>💎 Améliorations :</strong> Ramassez les gemmes pour monter de niveau et choisir des améliorations stratégiques.</p><p class='text-cyan-400 text-center font-bold mt-4'>Survivez le plus longtemps possible !</p>"
+            },
+            de: {
+                txtSub: "Ziehe über den Bildschirm oder nutze WASD. Schießen ist automatisch. Nutze ⚡ für den Dash.",
+                btnStart: "SPIEL STARTEN", btnSandboxMenu: "🛠️ SANDBOX-MODUS", btnEncyclopedia: "📖 ENZYKLOPÄDIE",
+                btnCustomize: "🎨 ANPASSEN", btnSettingsMenu: "⚙️ EINSTELLUNGEN", diffTitle: "Schwierigkeit Wählen",
+                btnDiffEasy: "🟢 EINFACH", btnDiffNormal: "🟡 NORMAL", btnDiffHard: "🔴 EXTREM",
+                btnBackDiff: "ZURÜCK", sbTitle: "Sandbox", sbDesc: "Wähle Gegner zum Trainieren aus. Rekorde werden nicht gespeichert.",
+                sbDiffLabel: "Sandbox-Schwierigkeit:", btnStartSandbox: "TRAINING STARTEN", custTitle: "Farben",
+                custDesc: "Wähle die Farbe deines Kerns und der Projektile.", settingsTitle: "Einstellungen",
+                lblVolumeMusic: "Musik: ", lblVolumeSfx: "Effekte: ", lblLang: "Sprache", btnOpenTutorial: "📚 SPIELANLEITUNG",
+                tutTitle: "Spielanleitung", pauseTitle: "PAUSIERT", btnResume: "FORTSETZEN", btnSettingsPause: "⚙️ EINSTELLUNGEN",
+                btnMenuFromPause: "SPIEL VERLASSEN", encTitle: "Enzyklopädie", goTitle: "System Zerstört",
+                btnRestart: "NOCHMAL", btnMenuGO: "HAUPTMENÜ", luTitle: "LEVEL UP!", luDesc: "Wähle ein Upgrade",
+                tutContent: "<p><strong>🕹️ Bewegung:</strong> Nutze den virtuellen Joystick auf dem Bildschirm oder die Tasten W, A, S, D.</p><p><strong>🎯 Schießen:</strong> Das Schiff feuert automatisch auf den nächsten Gegner.</p><p><strong>⚡ Dash:</strong> Tippe auf den Blitz oder drücke LEERTASTE. Während des Dashs bist du unverwundbar.</p><p><strong>💎 Upgrades:</strong> Sammle Edelsteine, um im Level aufzusteigen und starke Upgrades zu wählen.</p><p class='text-cyan-400 text-center font-bold mt-4'>Überlebe so lange wie möglich!</p>"
+            },
+            pt: {
+                txtSub: "Arraste a tela ou use WASD para mover. O tiro é automático. Use ⚡ para dar dash.",
+                btnStart: "INICIAR JOGO", btnSandboxMenu: "🛠️ MODO SANDBOX", btnEncyclopedia: "📖 ENCICLOPÉDIA",
+                btnCustomize: "🎨 PERSONALIZAR", btnSettingsMenu: "⚙️ CONFIGURAÇÕES", diffTitle: "Selecione a Dificuldade",
+                btnDiffEasy: "🟢 FÁCIL", btnDiffNormal: "🟡 NORMAL", btnDiffHard: "🔴 EXTREMA",
+                btnBackDiff: "VOLTAR", sbTitle: "Sandbox", sbDesc: "Selecione os inimigos para treinar. Os recordes não são salvos.",
+                sbDiffLabel: "Dificuldade Sandbox:", btnStartSandbox: "INICIAR TREINO", custTitle: "Cores",
+                custDesc: "Selecione a cor do seu núcleo e dos projéteis.", settingsTitle: "Configurações",
+                lblVolumeMusic: "Música: ", lblVolumeSfx: "Efeitos: ", lblLang: "Idioma", btnOpenTutorial: "📚 COMO JOGAR",
+                tutTitle: "Como jogar", pauseTitle: "PAUSADO", btnResume: "CONTINUAR", btnSettingsPause: "⚙️ CONFIGURAÇÕES",
+                btnMenuFromPause: "SAIR DO JOGO", encTitle: "Enciclopédia", goTitle: "Sistema Destruído",
+                btnRestart: "TENTAR NOVAMENTE", btnMenuGO: "MENU PRINCIPAL", luTitle: "SUBIU DE NÍVEL!", luDesc: "Escolha uma melhoria",
+                tutContent: "<p><strong>🕹️ Movimento:</strong> Use o joystick virtual tocando na tela ou as teclas W, A, S, D.</p><p><strong>🎯 Disparo:</strong> A nave atira automaticamente no inimigo mais próximo.</p><p><strong>⚡ Dash:</strong> Toque no raio ou pressione ESPAÇO para avançar. Você fica invencível durante o dash.</p><p><strong>💎 Melhorias:</strong> Colete gemas para encher a barra amarela, subir de nível e escolher melhorias.</p><p class='text-cyan-400 text-center font-bold mt-4'>Sobreviva o máximo que puder!</p>"
             }
         };
 
         function updateLanguage(lang) {
+            currentLang = lang;
             const t = txtTranslations[lang];
             document.getElementById('txtSub').innerText = t.txtSub;
             document.getElementById('btnStart').innerText = t.btnStart;
@@ -514,6 +569,9 @@
             document.getElementById('btnCustomize').innerText = t.btnCustomize;
             document.getElementById('btnSettingsMenu').innerText = t.btnSettingsMenu;
             document.getElementById('diffTitle').innerText = t.diffTitle;
+            document.getElementById('btnDiffEasy').innerText = t.btnDiffEasy;
+            document.getElementById('btnDiffNormal').innerText = t.btnDiffNormal;
+            document.getElementById('btnDiffHard').innerText = t.btnDiffHard;
             document.getElementById('btnBackDiff').innerText = t.btnBackDiff;
             document.getElementById('sbTitle').innerText = t.sbTitle;
             document.getElementById('sbDesc').innerText = t.sbDesc;
@@ -532,6 +590,7 @@
             document.getElementById('encTitle').innerText = t.encTitle;
             document.getElementById('goTitle').innerText = t.goTitle;
             document.getElementById('btnRestart').innerText = t.btnRestart;
+            document.getElementById('btnMenuFromGameOver').innerText = t.btnMenuGO;
             document.getElementById('luTitle').innerText = t.luTitle;
             document.getElementById('luDesc').innerText = t.luDesc;
             document.getElementById('tutContent').innerHTML = t.tutContent;
@@ -541,8 +600,8 @@
             
             document.querySelectorAll('.lang-btn').forEach(b => {
                 b.className = b.getAttribute('data-lang') === lang 
-                    ? "lang-btn flex-1 py-2 bg-blue-600 border border-blue-400 rounded text-white font-bold shadow-lg" 
-                    : "lang-btn flex-1 py-2 bg-gray-800 border border-gray-600 rounded text-gray-300 hover:bg-gray-700";
+                    ? "lang-btn py-2 bg-blue-600 border border-blue-400 rounded text-white font-bold shadow-lg" 
+                    : "lang-btn py-2 bg-gray-800 border border-gray-600 rounded text-gray-300 hover:bg-gray-700";
             });
         }
 
@@ -561,6 +620,7 @@
         
         updateHighScoreUI();
 
+        // --- PALETTE ESPANSA (15 COLORI NEON) ---
         const colorPalette = [
             { name: 'Ciano', hex: '#0ff' },
             { name: 'Rosso', hex: '#ef4444' },
@@ -571,7 +631,12 @@
             { name: 'Bianco', hex: '#ffffff' },
             { name: 'Viola', hex: '#a855f7' },
             { name: 'Blu', hex: '#3b82f6' },
-            { name: 'Rosa', hex: '#ec4899' }
+            { name: 'Rosa', hex: '#ec4899' },
+            { name: 'Verde Acido', hex: '#a3e635' },
+            { name: 'Blu Elettrico', hex: '#00f5d4' },
+            { name: 'Corallo Neon', hex: '#ff4d6d' },
+            { name: 'Indaco', hex: '#6366f1' },
+            { name: 'Giallo Neon', hex: '#fde047' }
         ];
         
         let playerColor = localStorage.getItem('neon_player_color') || '#0ff';
@@ -579,7 +644,7 @@
 
         colorPalette.forEach(function(c) {
             let btn = document.createElement('button');
-            btn.className = `w-12 h-12 md:w-16 md:h-16 rounded-full border-4 transition-all`;
+            btn.className = `w-11 h-11 md:w-14 md:h-14 rounded-full border-4 transition-all`;
             
             if(c.hex === playerColor) {
                 btn.style.borderColor = '#fff';
@@ -589,8 +654,9 @@
             }
             
             btn.style.backgroundColor = c.hex;
+            btn.title = c.name;
             
-            btn.addEventListener('click', function(e) {
+            const selectColor = function(e) {
                 e.preventDefault();
                 playerColor = c.hex;
                 localStorage.setItem('neon_player_color', playerColor);
@@ -606,7 +672,10 @@
                 if (player) {
                     player.color = playerColor;
                 }
-            });
+            };
+
+            btn.addEventListener('click', selectColor);
+            btn.addEventListener('touchstart', selectColor, {passive: false});
             
             colorGridUi.appendChild(btn);
         });
@@ -649,26 +718,35 @@
             sandboxGrid.appendChild(btn);
         });
 
-        // --- AUDIO, IMPOSTAZIONI E VOLUME ---
+        // --- MOTORE AUDIO SYNTHWAVE E AUTOPLAY ---
         let audioCtx;
+        let masterSfxGain;
+        let noiseBuffer = null;
+
         const bgmMenu = new Audio('stellar_engagement.mp3');
         const bgmGame = new Audio('hyperdrive_ignition.mp3');
         const bgmSandbox = new Audio('light_between_stars.mp3');
         bgmMenu.loop = true; bgmGame.loop = true; bgmSandbox.loop = true;
+        bgmMenu.preload = 'auto'; bgmGame.preload = 'auto'; bgmSandbox.preload = 'auto';
         
-        let bgmVolume = 0.6;
-        let sfxVolume = 0.6;
+        let bgmVolume = 0.7;
+        let sfxVolume = 0.5;
         let currentBGM = null;
+        let audioUnlocked = false;
         
         function playBGM(track) {
-            if (currentBGM) {
+            if (currentBGM && currentBGM !== track) {
                 currentBGM.pause();
                 currentBGM.currentTime = 0;
             }
             currentBGM = track;
             if (currentBGM) {
                 currentBGM.volume = bgmVolume;
-                if(bgmVolume > 0) currentBGM.play().catch(() => {});
+                if (bgmVolume > 0 && currentBGM.paused) {
+                    currentBGM.play().then(() => {
+                        audioUnlocked = true;
+                    }).catch(() => {});
+                }
             }
         }
 
@@ -676,11 +754,12 @@
         if (volMusicSlider) {
             volMusicSlider.addEventListener('input', (e) => {
                 bgmVolume = e.target.value / 100;
-                document.getElementById('volMusicValue').innerText = e.target.value + '%';
-                if(currentBGM) {
+                const valEl = document.getElementById('volMusicValue');
+                if (valEl) valEl.innerText = e.target.value + '%';
+                if (currentBGM) {
                     currentBGM.volume = bgmVolume;
-                    if(bgmVolume > 0 && currentBGM.paused) currentBGM.play().catch(()=>{});
-                    if(bgmVolume === 0) currentBGM.pause();
+                    if (bgmVolume > 0 && currentBGM.paused) currentBGM.play().catch(()=>{});
+                    if (bgmVolume === 0) currentBGM.pause();
                 }
             });
         }
@@ -689,7 +768,8 @@
         if (volSfxSlider) {
             volSfxSlider.addEventListener('input', (e) => {
                 sfxVolume = e.target.value / 100;
-                document.getElementById('volSfxValue').innerText = e.target.value + '%';
+                const valEl = document.getElementById('volSfxValue');
+                if (valEl) valEl.innerText = e.target.value + '%';
             });
         }
 
@@ -718,6 +798,7 @@
 
         const startBtn = document.getElementById('btnStart');
         const restartBtn = document.getElementById('btnRestart');
+        const btnMenuFromGameOver = document.getElementById('btnMenuFromGameOver');
         const pauseBtn = document.getElementById('pauseBtn');
         const btnResume = document.getElementById('btnResume');
         const btnMenuFromPause = document.getElementById('btnMenuFromPause');
@@ -745,6 +826,16 @@
         if(btnSettingsPause) { btnSettingsPause.addEventListener('click', openSet); btnSettingsPause.addEventListener('touchstart', openSet, {passive:false}); }
         if(btnCloseSettings) { btnCloseSettings.addEventListener('click', closeSet); btnCloseSettings.addEventListener('touchstart', closeSet, {passive:false}); }
 
+        // Listener Bottoni Lingua
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            const setLang = (e) => {
+                e.preventDefault();
+                updateLanguage(btn.getAttribute('data-lang'));
+            };
+            btn.addEventListener('click', setLang);
+            btn.addEventListener('touchstart', setLang, {passive: false});
+        });
+
         // Modale Tutorial
         const uiTutorial = document.getElementById('tutorialScreen');
         const btnOpenTutorial = document.getElementById('btnOpenTutorial');
@@ -757,53 +848,211 @@
         function initAudio() {
             if (!audioCtx) {
                 audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+                
+                // Compressore Master per evitare distorsioni e picchi
+                const compressor = audioCtx.createDynamicsCompressor();
+                compressor.threshold.setValueAtTime(-18, audioCtx.currentTime);
+                compressor.knee.setValueAtTime(24, audioCtx.currentTime);
+                compressor.ratio.setValueAtTime(8, audioCtx.currentTime);
+                compressor.attack.setValueAtTime(0.003, audioCtx.currentTime);
+                compressor.release.setValueAtTime(0.2, audioCtx.currentTime);
+                compressor.connect(audioCtx.destination);
+
+                masterSfxGain = audioCtx.createGain();
+                masterSfxGain.gain.setValueAtTime(0.75, audioCtx.currentTime);
+                masterSfxGain.connect(compressor);
+
+                // Pre-generazione White/Pink Noise Buffer per esplosioni spaziali
+                const bufferSize = audioCtx.sampleRate * 0.6;
+                noiseBuffer = audioCtx.createBuffer(1, bufferSize, audioCtx.sampleRate);
+                const output = noiseBuffer.getChannelData(0);
+                let b0 = 0, b1 = 0, b2 = 0;
+                for (let i = 0; i < bufferSize; i++) {
+                    const white = Math.random() * 2 - 1;
+                    b0 = 0.997 * b0 + white * 0.029;
+                    b1 = 0.985 * b1 + white * 0.032;
+                    b2 = 0.950 * b2 + white * 0.048;
+                    output[i] = (b0 + b1 + b2 + white * 0.18) * 1.5;
+                }
             }
             if (audioCtx.state === 'suspended') {
                 audioCtx.resume();
             }
         }
         
-        function playTone(freq1, freq2, type, duration, vol) {
-            if (!audioCtx || gameState === 'demo' || sfxVolume === 0) {
-                return; 
-            }
-            let finalVol = vol * (sfxVolume / 0.6);
+        function playTone(freq1, freq2, type, duration, vol, filterFreq = 1600) {
+            if (!audioCtx || gameState === 'demo' || sfxVolume === 0) return;
+            let finalVol = vol * sfxVolume;
             try {
+                const now = audioCtx.currentTime;
                 const osc = audioCtx.createOscillator();
+                const filter = audioCtx.createBiquadFilter();
                 const gain = audioCtx.createGain();
                 
                 osc.type = type;
-                osc.frequency.setValueAtTime(freq1, audioCtx.currentTime);
-                
+                osc.frequency.setValueAtTime(freq1, now);
                 if (freq2) {
-                    osc.frequency.exponentialRampToValueAtTime(freq2, audioCtx.currentTime + duration);
+                    osc.frequency.exponentialRampToValueAtTime(Math.max(20, freq2), now + duration);
                 }
                 
-                gain.gain.setValueAtTime(finalVol, audioCtx.currentTime);
-                gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + duration);
+                filter.type = 'lowpass';
+                filter.frequency.setValueAtTime(filterFreq, now);
+
+                gain.gain.setValueAtTime(0.0001, now);
+                gain.gain.linearRampToValueAtTime(finalVol, now + 0.008);
+                gain.gain.exponentialRampToValueAtTime(0.0001, now + duration);
                 
-                osc.connect(gain);
-                gain.connect(audioCtx.destination);
+                osc.connect(filter);
+                filter.connect(gain);
+                gain.connect(masterSfxGain);
                 
-                osc.start();
-                osc.stop(audioCtx.currentTime + duration);
-            } catch(e) {
-                
-            }
+                osc.start(now);
+                osc.stop(now + duration + 0.01);
+            } catch(e) {}
         }
         
         const sfx = {
-            shoot: function() { playTone(600, 200, 'square', 0.1, 0.03); },
-            enemyShoot: function() { playTone(300, 100, 'sawtooth', 0.2, 0.05); },
-            hit: function() { playTone(150, 50, 'sawtooth', 0.15, 0.1); },
-            xp: function() { playTone(800, 1200, 'sine', 0.1, 0.02); },
-            powerup: function() { playTone(400, 1500, 'sine', 0.4, 0.1); },
-            levelUp: function() { playTone(440, 880, 'square', 0.5, 0.1); },
-            dash: function() { playTone(800, 200, 'triangle', 0.2, 0.1); },
-            explosion: function() { playTone(100, 30, 'sawtooth', 0.3, 0.2); },
-            shieldHit: function() { playTone(900, 800, 'sine', 0.1, 0.1); },
-            shockwave: function() { playTone(100, 20, 'sine', 0.6, 0.3); },
-            laserAim: function() { playTone(1200, 1200, 'sine', 0.1, 0.02); }
+            // Sparo Sci-Fi Synthwave morbido, ovattato e ambientale
+            shoot: function() {
+                if (!audioCtx || gameState === 'demo' || sfxVolume === 0) return;
+                try {
+                    const now = audioCtx.currentTime;
+                    const dur = 0.085;
+                    const vol = 0.022 * sfxVolume;
+
+                    const osc1 = audioCtx.createOscillator();
+                    const osc2 = audioCtx.createOscillator();
+                    const filter = audioCtx.createBiquadFilter();
+                    const gain = audioCtx.createGain();
+
+                    osc1.type = 'triangle';
+                    osc2.type = 'sine';
+                    
+                    const pitchJitter = 0.96 + Math.random() * 0.08;
+                    osc1.frequency.setValueAtTime(480 * pitchJitter, now);
+                    osc1.frequency.exponentialRampToValueAtTime(115, now + dur);
+
+                    osc2.frequency.setValueAtTime(240 * pitchJitter, now);
+                    osc2.frequency.exponentialRampToValueAtTime(65, now + dur);
+
+                    filter.type = 'lowpass';
+                    filter.Q.setValueAtTime(1.8, now);
+                    filter.frequency.setValueAtTime(1300, now);
+                    filter.frequency.exponentialRampToValueAtTime(320, now + dur);
+
+                    gain.gain.setValueAtTime(0.0001, now);
+                    gain.gain.linearRampToValueAtTime(vol, now + 0.005);
+                    gain.gain.exponentialRampToValueAtTime(0.0001, now + dur);
+
+                    osc1.connect(filter);
+                    osc2.connect(filter);
+                    filter.connect(gain);
+                    gain.connect(masterSfxGain);
+
+                    osc1.start(now);
+                    osc2.start(now);
+                    osc1.stop(now + dur + 0.01);
+                    osc2.stop(now + dur + 0.01);
+                } catch(e) {}
+            },
+            // Esplosione spaziale profonda con rumore bianco filtrato + sub-bass
+            explosion: function() {
+                if (!audioCtx || gameState === 'demo' || sfxVolume === 0) return;
+                try {
+                    const now = audioCtx.currentTime;
+                    const dur = 0.36;
+                    const vol = 0.09 * sfxVolume;
+
+                    if (noiseBuffer) {
+                        const noise = audioCtx.createBufferSource();
+                        noise.buffer = noiseBuffer;
+
+                        const filter = audioCtx.createBiquadFilter();
+                        filter.type = 'lowpass';
+                        filter.Q.setValueAtTime(1.2, now);
+                        filter.frequency.setValueAtTime(750, now);
+                        filter.frequency.exponentialRampToValueAtTime(65, now + dur);
+
+                        const nGain = audioCtx.createGain();
+                        nGain.gain.setValueAtTime(0.0001, now);
+                        nGain.gain.linearRampToValueAtTime(vol, now + 0.01);
+                        nGain.gain.exponentialRampToValueAtTime(0.0001, now + dur);
+
+                        noise.connect(filter);
+                        filter.connect(nGain);
+                        nGain.connect(masterSfxGain);
+
+                        noise.start(now);
+                        noise.stop(now + dur + 0.02);
+                    }
+
+                    // Sub-bass punch
+                    const sub = audioCtx.createOscillator();
+                    const subGain = audioCtx.createGain();
+                    sub.type = 'sine';
+                    sub.frequency.setValueAtTime(95, now);
+                    sub.frequency.exponentialRampToValueAtTime(24, now + dur * 0.9);
+
+                    subGain.gain.setValueAtTime(vol * 0.9, now);
+                    subGain.gain.exponentialRampToValueAtTime(0.0001, now + dur * 0.9);
+
+                    sub.connect(subGain);
+                    subGain.connect(masterSfxGain);
+                    sub.start(now);
+                    sub.stop(now + dur);
+                } catch(e) {}
+            },
+            // Level Up: Arpeggio/Accordo Synthwave caldo e armonico
+            levelUp: function() {
+                if (!audioCtx || gameState === 'demo' || sfxVolume === 0) return;
+                try {
+                    const now = audioCtx.currentTime;
+                    // Accordo Synthwave: A4, C#5, E5, A5
+                    const notes = [440, 554.37, 659.25, 880];
+                    const vol = 0.038 * sfxVolume;
+
+                    notes.forEach((freq, idx) => {
+                        const start = now + idx * 0.055;
+                        const dur = 0.55;
+
+                        const osc1 = audioCtx.createOscillator();
+                        const osc2 = audioCtx.createOscillator();
+                        const filter = audioCtx.createBiquadFilter();
+                        const gain = audioCtx.createGain();
+
+                        osc1.type = 'triangle';
+                        osc2.type = 'sine';
+                        osc1.frequency.setValueAtTime(freq, start);
+                        osc2.frequency.setValueAtTime(freq * 1.003, start); // Leggero chorus
+
+                        filter.type = 'lowpass';
+                        filter.frequency.setValueAtTime(1900, start);
+                        filter.frequency.exponentialRampToValueAtTime(600, start + dur);
+
+                        gain.gain.setValueAtTime(0.0001, start);
+                        gain.gain.linearRampToValueAtTime(vol, start + 0.025);
+                        gain.gain.exponentialRampToValueAtTime(0.0001, start + dur);
+
+                        osc1.connect(filter);
+                        osc2.connect(filter);
+                        filter.connect(gain);
+                        gain.connect(masterSfxGain);
+
+                        osc1.start(start);
+                        osc2.start(start);
+                        osc1.stop(start + dur + 0.02);
+                        osc2.stop(start + dur + 0.02);
+                    });
+                } catch(e) {}
+            },
+            enemyShoot: function() { playTone(280, 95, 'triangle', 0.16, 0.035, 900); },
+            hit: function() { playTone(140, 45, 'triangle', 0.14, 0.065, 650); },
+            xp: function() { playTone(660, 990, 'sine', 0.08, 0.016, 1800); },
+            powerup: function() { playTone(330, 880, 'triangle', 0.32, 0.05, 1600); },
+            dash: function() { playTone(520, 140, 'sine', 0.18, 0.055, 1100); },
+            shieldHit: function() { playTone(740, 520, 'sine', 0.12, 0.05, 1400); },
+            shockwave: function() { playTone(110, 28, 'sine', 0.45, 0.09, 500); },
+            laserAim: function() { playTone(880, 880, 'sine', 0.09, 0.015, 1200); }
         };
 
         let keys = { 
@@ -1163,13 +1412,7 @@
                 
                 ctx.beginPath();
                 ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-                
-                if (this.dashActive) {
-                    ctx.fillStyle = '#fff';
-                } else {
-                    ctx.fillStyle = '#fff';
-                }
-                
+                ctx.fillStyle = '#fff';
                 ctx.fill();
                 ctx.strokeStyle = this.color;
                 ctx.lineWidth = 3;
@@ -2518,6 +2761,19 @@
             uiFinalTime.innerText = `${mins}:${secs}`;
         }
 
+        function returnToMenuFromGameOver() {
+            uiGameOver.classList.add('hidden');
+            uiHUD.classList.add('hidden');
+            uiSettings.classList.add('hidden');
+            uiMainMenu.classList.remove('hidden');
+            startDemo();
+        }
+
+        if (btnMenuFromGameOver) {
+            btnMenuFromGameOver.addEventListener('click', (e) => { e.preventDefault(); returnToMenuFromGameOver(); });
+            btnMenuFromGameOver.addEventListener('touchstart', (e) => { e.preventDefault(); returnToMenuFromGameOver(); }, {passive: false});
+        }
+
         function showLevelUpScreen() {
             gameState = 'levelup';
             touchActive = false; 
@@ -2869,11 +3125,21 @@
             });
         }
 
+        document.querySelectorAll('.sb-diff-btn').forEach(btn => {
+            ['click', 'touchstart'].forEach(evt => {
+                btn.addEventListener(evt, (e) => {
+                    e.preventDefault();
+                    sandboxDifficulty = btn.getAttribute('data-diff');
+                    updateSandboxDiffUI();
+                }, {passive: false});
+            });
+        });
+
         btnStartSandbox.addEventListener('click', (e) => { e.preventDefault(); currentDifficulty = sandboxDifficulty; startGame(true); });
         btnStartSandbox.addEventListener('touchstart', (e) => { e.preventDefault(); currentDifficulty = sandboxDifficulty; startGame(true); }, {passive: false});
 
         restartBtn.addEventListener('click', (e) => { e.preventDefault(); startGame(isSandboxMode); });
-        restartBtn.addEventListener('touchstart', (e) => { e.preventDefault(); startGame(isSandboxMode); });
+        restartBtn.addEventListener('touchstart', (e) => { e.preventDefault(); startGame(isSandboxMode); }, {passive: false});
 
         const encData = [
             { type: 0, name: "Base", color: "#d946ef", svg: '<polygon points="12,2 22,12 12,22 2,12" fill="#111" stroke="#d946ef" stroke-width="2"/>', desc: "Velocità media. Insegue senza sosta.", spawn: "0s", baseHp: 20, hpScale: 0.10, baseDmg: 10, baseSpd: 80, spdScale: 0.3, pts: 10 },
@@ -2882,7 +3148,7 @@
             { type: 5, name: "Kamikaze", color: "#f97316", svg: '<circle cx="12" cy="12" r="10" fill="#111" stroke="#f97316" stroke-width="2" stroke-dasharray="3 3"/>', desc: "Esplode se si avvicina troppo o se distrutto.", spawn: "35s", baseHp: 15, hpScale: 0.05, baseDmg: 30, baseSpd: 140, spdScale: 0.4, pts: 20 },
             { type: 9, name: "Difensore", color: "#22d3ee", svg: '<rect x="7" y="7" width="10" height="10" fill="#111" stroke="#22d3ee" stroke-width="2"/><circle cx="3" cy="12" r="2" fill="#22d3ee"/><circle cx="21" cy="12" r="2" fill="#22d3ee"/><circle cx="12" cy="3" r="2" fill="#22d3ee"/>', desc: "Circondato da scudi che distruggono i proiettili.", spawn: "50s", baseHp: 60, hpScale: 0.10, baseDmg: 20, baseSpd: 60, spdScale: 0.1, pts: 60 },
             { type: 6, name: "Caricatore", color: "#22c55e", svg: '<polygon points="12,2 22,22 12,16 2,22" fill="#111" stroke="#22c55e" stroke-width="2"/>', desc: "Ti punta con un laser e scatta velocissimo.", spawn: "50s", baseHp: 40, hpScale: 0.10, baseDmg: 25, baseSpd: 50, spdScale: 0.1, pts: 40 },
-            { type: 2, name: "Tank", color: "#ef4444", svg: '<polygon points="12,2 20.6,7 20.6,17 12,22 3.4,17 3.4,7" fill="#111" stroke="#ef4444" stroke-width="2"/>', desc: "Lento, grande e mucho resistente. Fa da scudo.", spawn: "70s", baseHp: 50, hpScale: 0.15, baseDmg: 20, baseSpd: 40, spdScale: 0.2, pts: 50 },
+            { type: 2, name: "Tank", color: "#ef4444", svg: '<polygon points="12,2 20.6,7 20.6,17 12,22 3.4,17 3.4,7" fill="#111" stroke="#ef4444" stroke-width="2"/>', desc: "Lento, grande e molto resistente. Fa da scudo.", spawn: "70s", baseHp: 50, hpScale: 0.15, baseDmg: 20, baseSpd: 40, spdScale: 0.2, pts: 50 },
             { type: 7, name: "Fantasma", color: "#9ca3af", svg: '<polygon points="12,2 15,9 22,9 16,14 18,21 12,17 6,21 8,14 2,9 9,9" fill="#111" stroke="#9ca3af" stroke-width="2"/>', desc: "Diventa periodicamente intangibile e invisibile.", spawn: "70s", baseHp: 20, hpScale: 0.10, baseDmg: 15, baseSpd: 90, spdScale: 0.3, pts: 30 },
             { type: 8, name: "Generatore", color: "#64748b", svg: '<polygon points="12,2 18,12 12,22 6,12" fill="#111" stroke="#64748b" stroke-width="2"/>', desc: "Lentissimo, partorisce nuovi nemici ogni 4s.", spawn: "100s", baseHp: 200, hpScale: 0.15, baseDmg: 30, baseSpd: 20, spdScale: 0, pts: 150 },
             { type: 3, name: "Boss Shooter", color: "#a855f7", svg: '<polygon points="7,2 17,2 22,7 22,17 17,22 7,22 2,17 2,7" fill="#111" stroke="#a855f7" stroke-width="2"/>', desc: "Spara laser a inseguimento. Drop garantito!", spawn: "100s", baseHp: 150, hpScale: 0.20, baseDmg: 25, baseSpd: 30, spdScale: 0.1, pts: 200 },
@@ -2974,18 +3240,34 @@
             animationFrameId = requestAnimationFrame(gameLoop);
         }
 
-        let audioUnlocked = false;
+        // --- SBLOCCO AUDIO GLOBALE (FASE DI CAPTURE) ---
+        const unlockEvents = ['pointerdown', 'touchstart', 'touchend', 'click', 'keydown'];
+        function removeUnlockListeners() {
+            unlockEvents.forEach(evt => {
+                window.removeEventListener(evt, unlockAudio, { capture: true });
+            });
+        }
+
         function unlockAudio() {
-            if (!audioUnlocked) {
-                if(bgmVolume > 0 && currentBGM) currentBGM.play().catch(()=>{});
-                initAudio();
+            initAudio();
+            if (!currentBGM) {
+                currentBGM = bgmMenu;
+                currentBGM.volume = bgmVolume;
+            }
+            if (bgmVolume > 0 && currentBGM.paused) {
+                currentBGM.play().then(() => {
+                    audioUnlocked = true;
+                    removeUnlockListeners();
+                }).catch(() => {});
+            } else if (!currentBGM.paused) {
                 audioUnlocked = true;
-                document.removeEventListener('click', unlockAudio);
-                document.removeEventListener('touchstart', unlockAudio);
+                removeUnlockListeners();
             }
         }
-        document.addEventListener('click', unlockAudio);
-        document.addEventListener('touchstart', unlockAudio);
+
+        unlockEvents.forEach(evt => {
+            window.addEventListener(evt, unlockAudio, { capture: true, passive: true });
+        });
 
         startDemo();
     </script>
